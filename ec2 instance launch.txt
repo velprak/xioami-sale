@@ -1,0 +1,27 @@
+---
+- name: ec2 launching
+  hosts: localhost
+  connection: local
+  gather_facts: False
+
+  tasks:
+    #this task creates 5 ec2 instances that are all named demo and are copies of the image specified
+    - name: Provision a set of instances
+      ec2:
+         aws_access_key: AKIAT7TBAKUO7ONEM5X6
+         aws_secret_key: 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
+         key_name: keypairisnot working
+         group: default
+         instance_type: t2.micro
+         image: ami-0747bdcabd34c712a
+         region: us-east-1
+         ec2_url: ..
+         wait: true
+         exact_count: 2
+         count_tag:
+            Name: jenkins
+         instance_tags:
+            Name: cilent
+      register: ec2
+~
+~
